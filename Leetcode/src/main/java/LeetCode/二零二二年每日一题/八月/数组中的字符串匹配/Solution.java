@@ -1,4 +1,4 @@
-package LeetCode.二零二二年.八月.数组中的字符串匹配;
+package LeetCode.二零二二年每日一题.八月.数组中的字符串匹配;
 
 import java.util.ArrayList;
 import java.util.List;

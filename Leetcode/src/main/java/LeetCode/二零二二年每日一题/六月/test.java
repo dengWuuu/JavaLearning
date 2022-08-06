@@ -1,4 +1,4 @@
-package LeetCode.二零二二年.六月;
+package LeetCode.二零二二年每日一题.六月;
 
 /**
  * @author Wu
