@@ -14,6 +14,5 @@ public class Solution {
             cur = tmp;
         }
         return pre;
-
     }
 }
