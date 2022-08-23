@@ -1,4 +1,4 @@
-package LeetCode.热题100.二叉树的中序遍历;
+package LeetCode.热题100.二叉树展开为链表;
 
 public class TreeNode {
     int val;

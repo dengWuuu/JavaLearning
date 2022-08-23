@@ -8,7 +8,7 @@ import java.util.Map;
  * @date 2022年07月23日 21:19
  */
 public class Solution {
-    private Map<Integer, Integer> index = new HashMap<>();
+    private final Map<Integer, Integer> index = new HashMap<>();
 
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         int n = inorder.length;

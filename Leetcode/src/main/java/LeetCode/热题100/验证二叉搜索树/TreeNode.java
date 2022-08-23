@@ -1,14 +1,14 @@
-package LeetCode.热题100.二叉树的中序遍历;
+package LeetCode.热题100.验证二叉搜索树;
 
 public class TreeNode {
     int val;
-    public TreeNode left;
-    public TreeNode right;
+    TreeNode left;
+    TreeNode right;
 
     TreeNode() {
     }
 
-    public TreeNode(int val) {
+    TreeNode(int val) {
         this.val = val;
     }
 

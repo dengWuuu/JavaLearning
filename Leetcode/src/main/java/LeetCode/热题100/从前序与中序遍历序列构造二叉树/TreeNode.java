@@ -1,4 +1,4 @@
-package LeetCode.热题100.二叉树的中序遍历;
+package LeetCode.热题100.从前序与中序遍历序列构造二叉树;
 
 public class TreeNode {
     int val;

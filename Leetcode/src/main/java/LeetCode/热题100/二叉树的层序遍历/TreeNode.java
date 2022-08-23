@@ -1,4 +1,4 @@
-package LeetCode.热题100.二叉树的中序遍历;
+package LeetCode.热题100.二叉树的层序遍历;
 
 public class TreeNode {
     int val;

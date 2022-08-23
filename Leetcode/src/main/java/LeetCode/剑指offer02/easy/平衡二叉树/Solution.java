@@ -6,10 +6,6 @@ package LeetCode.剑指offer02.easy.平衡二叉树;
  */
 public class Solution {
     public boolean isBalanced(TreeNode root) {
-//        if (Math.abs(getHeight(root.left) - getHeight(root.right)) <= 1) {
-//            return isBalanced(root.left) && isBalanced(root.right);
-//        }
-//        return false;
         return recur(root) != -1;
     }
 
