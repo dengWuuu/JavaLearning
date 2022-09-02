@@ -22,9 +22,6 @@ public class Solution {
                         dp[i][j] = dp[i - 1][j - 1];
                     }
                 } else {
-//                    for (int k = 0; k <= i; k++) {
-//                        dp[i][j] = dp[i][j] || dp[k][j - 1];
-//                    }
                     dp[i][j] = dp[i - 1][j] || dp[i][j - 1];
                 }
             }

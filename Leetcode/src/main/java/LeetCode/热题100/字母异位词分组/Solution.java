@@ -29,6 +29,6 @@ public class Solution {
             orDefault.add(str);
             map.put(sb.toString(), orDefault);
         }
-        return new ArrayList<List<String>>(map.values());
+        return new ArrayList<>(map.values());
     }
 }

@@ -1,7 +1,5 @@
 package LeetCode.热题100.hard.柱状图中最大的矩形;
 
-import java.util.Vector;
-
 /**
  * @author Wu
  * @date 2022年08月20日 11:37
