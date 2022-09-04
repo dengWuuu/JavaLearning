@@ -6,11 +6,17 @@ package LeetCode.热题100.把二叉搜索树转换为累加树;
  */
 public class Solution {
     public TreeNode convertBST(TreeNode root) {
+        recur(root, 0);
+        return root;
+    }
 
+    public int recur(TreeNode root, int sum) {
+        if (root == null) return sum;
+        int recur = recur(root.right, sum);
+        root.val +=recur;
+        return recur(root.left, root.val);
     }
 }
-
-
 
 
 class TreeNode {
