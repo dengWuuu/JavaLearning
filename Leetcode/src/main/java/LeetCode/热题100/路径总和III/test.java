@@ -8,7 +8,7 @@ public class test {
     public static void main(String[] args) {
         /**
          *
-         Solution solution = new Solution();
+         KMPAlgorithm solution = new KMPAlgorithm();
          TreeNode root = new TreeNode(1000000000);
          TreeNode left = new TreeNode(1000000000);
          root.left = left;

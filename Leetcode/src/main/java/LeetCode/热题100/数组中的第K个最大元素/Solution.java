@@ -42,7 +42,7 @@ public class Solution {
 
 
     /**
-     * 下面是用大根堆的解法
+     * 下面是用小根堆的解法
      */
     private void percolateDown(int[] nums, int i, int len) {
         int parent = i, children = 2 * i + 1;
