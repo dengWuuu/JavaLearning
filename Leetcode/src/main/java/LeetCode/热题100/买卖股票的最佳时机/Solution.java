@@ -1,7 +1,7 @@
 package LeetCode.热题100.买卖股票的最佳时机;
 
 /**
- * https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/?favorite=2cktkvj
+ * https://leetcode.cn/problems/best股票-time-to-buy-and-sell-stock/?favorite=2cktkvj
  * @author Wu
  * @date 2022年08月24日 11:53
  */
