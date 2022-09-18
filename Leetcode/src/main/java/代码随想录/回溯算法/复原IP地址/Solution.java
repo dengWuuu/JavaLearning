@@ -22,10 +22,7 @@ public class Solution {
         }
         if (s.length() == idx || pointNum == 4) return;
 
-        for (int i = idx; i < s.length()
-                && i - idx < 3
-                && Integer.parseInt(s.substring(idx, i + 1)) >= 0
-                && Integer.parseInt(s.substring(idx, i + 1)) <= 255; i++) {
+        for (int i = idx; i < s.length() && i - idx < 3 && Integer.parseInt(s.substring(idx, i + 1)) >= 0 && Integer.parseInt(s.substring(idx, i + 1)) <= 255; i++) {
             if (i - idx > 0 && s.charAt(idx) == '0') continue;
             path.append(s, idx, i + 1);
             if (pointNum < 3) path.append(".");
