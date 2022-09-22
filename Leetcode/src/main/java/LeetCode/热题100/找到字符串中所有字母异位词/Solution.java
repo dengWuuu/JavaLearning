@@ -53,14 +53,12 @@ class Solution2 {
         if (less == 0) ans.add(0);
 
         for (int i = 0; i < sL - pL; i++) {
-            int left = count[s.charAt(i) - 'a'];
-            if (left == 1) less--;
-            else if (left == 0) less++;
-            --left;
-            int right = count[s.charAt(i + pL) - 'a'];
-            if (right == 0) less++;
-            else if (right == -1) less--;
-            ++right;
+            if (count[s.charAt(i) - 'a'] == 1) less--;
+            else if (count[s.charAt(i) - 'a'] == 0) less++;
+            --count[s.charAt(i) - 'a'];
+            if (count[s.charAt(i + pL) - 'a'] == 0) less++;
+            else if (count[s.charAt(i + pL) - 'a'] == -1) less--;
+            ++count[s.charAt(i + pL) - 'a'];
             if (less == 0) ans.add(i + 1);
         }
         return ans;
