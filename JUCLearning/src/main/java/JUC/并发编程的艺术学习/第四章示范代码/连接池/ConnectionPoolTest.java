@@ -1,10 +1,8 @@
-package JUC.并发编程之美学习.第四章示范代码.连接池;
+package JUC.并发编程的艺术学习.第四章示范代码.连接池;
 
 
 import java.sql.Connection;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ConnectionPoolTest {

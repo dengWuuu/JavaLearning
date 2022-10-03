@@ -1,4 +1,4 @@
-package JUC.并发编程之美学习.第四章示范代码.Daemon;
+package JUC.并发编程的艺术学习.第四章示范代码.Daemon;
 
 public class Daemon {
     public static void main(String[] args) {

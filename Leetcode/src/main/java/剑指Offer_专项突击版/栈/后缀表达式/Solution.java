@@ -18,10 +18,20 @@ public class Solution {
             } else {
                 int right = Integer.parseInt(stack.pop());
                 int left = Integer.parseInt(stack.pop());
-                if (Objects.equals(token, "+")) stack.push(right + left + "");
-                else if (Objects.equals(token, "-")) stack.push(left - right + "");
-                else if (Objects.equals(token, "*")) stack.push(left * right + "");
-                else if (Objects.equals(token, "/")) stack.push(left / right + "");
+                switch (token) {
+                    case "+":
+                        stack.push(right + left + "");
+                        break;
+                    case "-":
+                        stack.push(left - right + "");
+                        break;
+                    case "*":
+                        stack.push(left * right + "");
+                        break;
+                    case "/":
+                        stack.push(left / right + "");
+                        break;
+                }
             }
         }
         return Integer.parseInt(stack.pop());

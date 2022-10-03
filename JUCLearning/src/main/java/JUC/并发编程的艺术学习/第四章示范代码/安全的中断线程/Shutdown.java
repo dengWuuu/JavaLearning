@@ -1,4 +1,4 @@
-package JUC.并发编程之美学习.第四章示范代码.安全的中断线程;
+package JUC.并发编程的艺术学习.第四章示范代码.安全的中断线程;
 
 import java.util.concurrent.TimeUnit;
 
