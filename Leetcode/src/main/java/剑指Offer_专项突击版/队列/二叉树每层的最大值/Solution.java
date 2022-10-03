@@ -15,8 +15,9 @@ public class Solution {
         deque.addLast(root);
         while (!deque.isEmpty()) {
             int max = Integer.MIN_VALUE;
-            for (int i = 0; i < deque.size(); i++) {
-                TreeNode pop = deque.pop();
+            int size = deque.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode pop = deque.pollFirst();
                 max = Math.max(max, pop.val);
                 if (pop.left != null) deque.addLast(pop.left);
                 if (pop.right != null) deque.addLast(pop.right);
