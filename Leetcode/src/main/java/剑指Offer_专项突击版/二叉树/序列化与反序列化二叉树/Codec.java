@@ -4,30 +4,68 @@ import LeetCode.热题100.hard.二叉树路径最大和.TreeNode;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Objects;
+import java.util.LinkedList;
 
+/**
+ * @author Wu
+ * @date 2022年10月04日 11:59
+ */
 public class Codec {
+
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
-        if (root == null) return "null";
-        Deque<TreeNode> deque = new ArrayDeque<>();
-        deque.addLast(root);
-        StringBuilder sb = new StringBuilder();
-        while (!deque.isEmpty()) {
-            TreeNode treeNode = deque.pollFirst();
-            if (treeNode.val == -1001) {
-                sb.append("null,");
-                continue;
-            }
-            sb.append(treeNode.val).append(",");
-            deque.addLast(Objects.requireNonNullElseGet(treeNode.left, () -> new TreeNode(-1001)));
-            deque.addLast(Objects.requireNonNullElseGet(treeNode.right, () -> new TreeNode(-1001)));
+        if (root == null) return null;
+        Deque<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        StringBuilder ans = new StringBuilder();
+        ans.append(root.val).append(",");
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            if (node.left != null) {
+                queue.add(node.left);
+                ans.append(node.left.val).append(",");
+            } else ans.append("null").append(",");
+
+            if (node.right != null) {
+                queue.add(node.right);
+                ans.append(node.right.val).append(",");
+            } else ans.append("null").append(",");
+
         }
-        return sb.substring(0, sb.length() - 1);
+        return ans.substring(0, ans.length() - 1);
     }
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-        return null;
+        if (data == null || data.isEmpty() || data.isBlank()) return null;
+        Deque<TreeNode> deque = new ArrayDeque<>();
+        String[] split = data.split(",");
+        TreeNode root = new TreeNode(Integer.parseInt(split[0]));
+        deque.add(root);
+        for (int i = 1; i < split.length - 1; i += 2) {
+            String left = split[i];
+            String right = split[i + 1];
+            TreeNode node = null;
+            if (!deque.isEmpty()) node = deque.pollFirst();
+            else break;
+            TreeNode l, r;
+            if (!left.equals("null") && !right.equals("null")) {
+                l = new TreeNode(Integer.parseInt(left));
+                r = new TreeNode(Integer.parseInt(right));
+                node.left = l;
+                node.right = r;
+                deque.addLast(l);
+                deque.addLast(r);
+            } else if (!left.equals("null")) {
+                l = new TreeNode(Integer.parseInt(left));
+                node.left = l;
+                deque.addLast(l);
+            } else if (!right.equals("null")) {
+                r = new TreeNode(Integer.parseInt(right));
+                node.right = r;
+                deque.addLast(r);
+            }
+        }
+        return root;
     }
 }
