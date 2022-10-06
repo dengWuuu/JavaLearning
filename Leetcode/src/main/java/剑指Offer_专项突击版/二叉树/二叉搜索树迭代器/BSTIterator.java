@@ -5,37 +5,31 @@ import LeetCode.热题100.hard.二叉树路径最大和.TreeNode;
 import java.util.Deque;
 import java.util.LinkedList;
 
+/**
+ * @author Wu
+ * @date 2022年10月05日 22:51
+ */
 public class BSTIterator {
-    TreeNode dummyHead;
-    TreeNode cur;
+    private TreeNode cur;
+    private Deque<TreeNode> stack;
 
     public BSTIterator(TreeNode root) {
-        TreeNode pre;
-        dummyHead = new TreeNode(-1);
-        pre = dummyHead;
-        Deque<TreeNode> deque = new LinkedList<>();
-        TreeNode tmp = root;
-        while (tmp != null || !deque.isEmpty()) {
-            while (tmp != null) {
-                deque.addLast(tmp);
-                tmp = tmp.left;
-            }
-            tmp = deque.pollLast();
-            pre.right = tmp;
-            tmp.left = null;
-            pre = tmp;
-            tmp = tmp.right;
-        }
-        cur = dummyHead.right;
+        cur = root;
+        stack = new LinkedList<>();
     }
 
     public int next() {
-        int val = cur.val;
+        while (cur != null) {
+            stack.push(cur);
+            cur = cur.left;
+        }
+        cur = stack.pop();
+        int ret = cur.val;
         cur = cur.right;
-        return val;
+        return ret;
     }
 
     public boolean hasNext() {
-        return cur != null;
+        return cur != null || !stack.isEmpty();
     }
 }
