@@ -8,13 +8,10 @@ import LeetCode.热题100.hard.二叉树路径最大和.TreeNode;
  */
 public class Solution {
     TreeNode pre, ans;
-
-
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
         pre = null;
         return recur(root, p);
     }
-
 
     public TreeNode recur(TreeNode root, TreeNode p) {
         if (root == null) return null;

@@ -13,6 +13,7 @@ public class ReentrantLock打断 { ;
     private static final java.util.concurrent.locks.ReentrantLock lock = new java.util.concurrent.locks.ReentrantLock();
 
     public static void main(String[] args) throws InterruptedException {
+        
         Thread t1 = new Thread(() -> {
             log.debug("start...");
             try {
