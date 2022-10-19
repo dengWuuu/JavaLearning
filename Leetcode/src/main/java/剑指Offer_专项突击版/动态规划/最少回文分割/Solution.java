@@ -11,6 +11,7 @@ public class Solution {
                 valid[i][j] = true;
             }
         }
+
         for (int i = s.length() - 1; i >= 0; i--) {
             for (int j = i + 1; j < s.length(); j++) {
                 valid[i][j] = s.charAt(i) == s.charAt(j) && valid[i + 1][j - 1];
