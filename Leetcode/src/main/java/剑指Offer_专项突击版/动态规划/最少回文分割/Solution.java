@@ -4,32 +4,32 @@ import java.util.Arrays;
 
 public class Solution {
     public int minCut(String s) {
-        int[] dp = new int[s.length()];
-        boolean[][] valid = new boolean[s.length()][s.length()];
-        for (int i = 0; i < valid.length; i++) {
-            for (int j = 0; j < valid[0].length; j++) {
-                valid[i][j] = true;
+        int n = s.length();
+        boolean[][] g = new boolean[n][n];
+        for (int i = 0; i < n; ++i) {
+            Arrays.fill(g[i], true);
+        }
+
+        for (int i = n - 1; i >= 0; --i) {
+            for (int j = i + 1; j < n; ++j) {
+                g[i][j] = s.charAt(i) == s.charAt(j) && g[i + 1][j - 1];
             }
         }
 
-        for (int i = s.length() - 1; i >= 0; i--) {
-            for (int j = i + 1; j < s.length(); j++) {
-                valid[i][j] = s.charAt(i) == s.charAt(j) && valid[i + 1][j - 1];
-            }
-        }
-        System.out.println(Arrays.deepToString(valid));
-        Arrays.fill(dp,Integer.MAX_VALUE);
-
-        for (int i = 0; i < s.length(); i++) {
-            if (valid[0][i]) dp[i] = 0;
-            else {
-                for (int j = 0; j < i; j++) {
-                    if (valid[j + 1][i]) {
-                        dp[i] = Math.min(dp[i], dp[i - j] + 1);
+        int[] f = new int[n];
+        Arrays.fill(f, Integer.MAX_VALUE);
+        for (int i = 0; i < n; ++i) {
+            if (g[0][i]) {
+                f[i] = 0;
+            } else {
+                for (int j = 0; j < i; ++j) {
+                    if (g[j + 1][i]) {
+                        f[i] = Math.min(f[i], f[j] + 1);
                     }
                 }
             }
         }
-        return dp[dp.length - 1];
+
+        return f[n - 1];
     }
 }
