@@ -2,10 +2,6 @@ package 剑指Offer_专项突击版.图.重建序列;
 
 import java.util.*;
 
-/**
- * @author Wu
- * @date 2022年10月21日 13:16
- */
 public class Solution {
     public boolean sequenceReconstruction(int[] nums, int[][] sequences) {
         List<List<Integer>> edges = new ArrayList<>();
@@ -27,9 +23,6 @@ public class Solution {
             if (degree[i] == 0) deque.add(i);
         }
 
-        System.out.println(Arrays.toString(degree));
-        System.out.println(edges.toString());
-
         if (deque.size() != 1) return false;
         int idx = 0;
         int[] ans = new int[nums.length];
@@ -43,9 +36,10 @@ public class Solution {
                 }
             }
             if (deque.size() > 1) return false;
-            ans[idx++] = node + 1;
+            ans[idx++] = node;
         }
-        System.out.println(Arrays.toString(ans));
+
         return Arrays.equals(ans, nums);
+
     }
 }
