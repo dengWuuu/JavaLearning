@@ -1,6 +1,7 @@
 package 字节跳动题库.排序数组;
 
 import java.util.Random;
+import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * @author Wu
