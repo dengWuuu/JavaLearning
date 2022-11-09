@@ -2,7 +2,7 @@ package JUC.设计模式.同步模式之顺序控制;
 
 class SyncWaitNotify {
     private int flag;
-    private int loopNumber;
+    private final int loopNumber;
 
     public SyncWaitNotify(int flag, int loopNumber) {
         this.flag = flag;

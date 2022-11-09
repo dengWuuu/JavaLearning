@@ -39,7 +39,7 @@ class Park_Unpark {
         }
     }
 
-    private int loopNumber;
+    private final int loopNumber;
 
     public Park_Unpark(int loopNumber) {
         this.loopNumber = loopNumber;
