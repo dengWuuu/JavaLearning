@@ -1,4 +1,4 @@
-package 常见JUC题目.按序打印;
+package JUC.按序打印;
 
 import java.util.concurrent.Semaphore;
 

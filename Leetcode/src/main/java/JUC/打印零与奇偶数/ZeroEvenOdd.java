@@ -1,4 +1,4 @@
-package 常见JUC题目.打印零与奇偶数;
+package JUC.打印零与奇偶数;
 
 import java.util.concurrent.Semaphore;
 import java.util.function.IntConsumer;

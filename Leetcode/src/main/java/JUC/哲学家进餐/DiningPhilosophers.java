@@ -1,4 +1,4 @@
-package 常见JUC题目.哲学家进餐;
+package JUC.哲学家进餐;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Lock;

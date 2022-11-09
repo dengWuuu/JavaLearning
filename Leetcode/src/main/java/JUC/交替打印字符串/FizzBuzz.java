@@ -1,9 +1,9 @@
-﻿package 常见JUC题目.交替打印字符串;
+package JUC.交替打印字符串;
 
 import java.util.concurrent.Semaphore;
 import java.util.function.IntConsumer;
 
-class FizzBuzz {
+public class FizzBuzz {
     private int n;
     Semaphore s = new Semaphore(1);
     int i = 1;

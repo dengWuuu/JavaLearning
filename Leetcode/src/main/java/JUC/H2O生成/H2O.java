@@ -1,4 +1,4 @@
-package 常见JUC题目.H2O生成;
+package JUC.H2O生成;
 
 import java.util.concurrent.Semaphore;
 

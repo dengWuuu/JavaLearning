@@ -1,4 +1,4 @@
-package 常见JUC题目.交替打印FooBar;
+package JUC.交替打印FooBar;
 
 import java.util.concurrent.Semaphore;
 

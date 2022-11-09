@@ -11,9 +11,8 @@ public class Solution {
         int l = 0, r = nums.length - 1;
         while (true) {
             int idx = partition(nums, l, r);
-            if (idx == target) {
-                return nums[idx];
-            } else if (idx > target) r = idx - 1;
+            if (idx == target) return nums[idx];
+            else if (idx > target) r = idx - 1;
             else l = idx + 1;
         }
     }
