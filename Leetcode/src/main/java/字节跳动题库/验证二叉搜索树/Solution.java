@@ -14,6 +14,7 @@ public class Solution {
     }
 
     public boolean recur(TreeNode root) {
+        StringBuilder sb = new StringBuilder();
         if (root == null) return true;
         boolean recur = recur(root.left);
         if (pre != null) {

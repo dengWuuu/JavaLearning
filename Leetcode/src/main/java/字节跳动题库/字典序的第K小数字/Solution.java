@@ -6,36 +6,41 @@ import java.util.List;
 
 public class Solution {
     public static int findKthNumber(int n, int k) {
-        int ans = 1;
+        int start = 1;
         while (k > 1) {
-            int cnt = getCnt(ans, n);
-            if (cnt < k) {
-                k -= cnt;
-                ans++;
-            } else {
+            int cnt = getCnt(start, n);
+            if (cnt >= k) {
+                start *= 10;
                 k--;
-                ans *= 10;
+            } else {
+                k -= cnt;
+                start++;
             }
         }
-        return ans;
+        return start;
     }
 
-    public static int getCnt(int x, int limit) {
-        String a = String.valueOf(x), b = String.valueOf(limit);
+    public static int getCnt(int i, int limit) {
+        String a = String.valueOf(i), b = String.valueOf(limit);
         int m = a.length(), n = b.length(), dis = n - m;
-        int ans = 0;
-        int prefix = Integer.parseInt(b.substring(0, m));
-        for (int i = 0; i < dis; i++) {
-            ans += Math.pow(10, i);
+        int cnt = 0;
+        int limitPrefix = Integer.parseInt(b.substring(0, m));
+        for (int j = 0; j < dis; j++) {
+            cnt += Math.pow(10, j);
         }
 
-        if (prefix > x) ans += Math.pow(10, dis);
-        else if (prefix == x) ans += limit - x * Math.pow(10, dis) + 1;
-        return ans;
+        if (i < limitPrefix) {
+            cnt += Math.pow(10, dis);
+        } else if (i == limitPrefix) {
+            cnt += Integer.parseInt(b.substring(m)) + 1;
+        }
+        return cnt;
     }
 
     public static void main(String[] args) {
+        System.out.println(getCnt(123, 12456));
         System.out.println(getCnt(124, 12456));
-//        System.out.println(getCnt(123, 12456));
     }
+
+
 }
