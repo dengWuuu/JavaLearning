@@ -38,6 +38,6 @@ public class Solution {
                 minLen = i - left + 2;
             }
         }
-        return ansL == -1 ? "" : s.substring(ansL, ansL + minLen + 1);
+        return ansL == -1 ? "" : s.substring(ansL, ansL + minLen);
     }
 }
