@@ -1,9 +1,12 @@
 package 腾讯题库.格雷编码;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Solution {
-    public List<Integer> grayCode(int n) {
+    List<Integer> ans = new ArrayList<>();
 
+    public List<Integer> grayCode(int n) {
+        return ans;
     }
 }
