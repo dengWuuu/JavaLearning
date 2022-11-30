@@ -2,7 +2,7 @@ package LeetCode.周赛总.双周赛.双周赛91.题2;
 
 import java.util.Arrays;
 
-class Solution {
+public class Solution {
     long MOD = (long) (1e9 + 7);
 
 
