@@ -1,8 +1,6 @@
-package LeetCode.周赛总.双周赛.周赛89.二的幂数组中查询范围内的乘积;
+package LeetCode.周赛总.双周赛.双周赛89.二的幂数组中查询范围内的乘积;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 /**

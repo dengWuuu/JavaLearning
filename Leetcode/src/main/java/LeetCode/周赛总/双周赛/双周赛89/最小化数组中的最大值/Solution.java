@@ -1,6 +1,4 @@
-package LeetCode.周赛总.双周赛.周赛89.最小化数组中的最大值;
-
-import java.util.*;
+package LeetCode.周赛总.双周赛.双周赛89.最小化数组中的最大值;
 
 /**
  * @author Wu

@@ -1,4 +1,4 @@
-package LeetCode.周赛总.双周赛.周赛89.有效时间的数目;
+package LeetCode.周赛总.双周赛.双周赛89.有效时间的数目;
 
 /**
  * @author Wu
