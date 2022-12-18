@@ -54,8 +54,8 @@ public class Allocator {
 }
 
 /**
- * Your Allocator object will be instantiated and called as such:
- * Allocator obj = new Allocator(n);
+ * Your Solution object will be instantiated and called as such:
+ * Solution obj = new Solution(n);
  * int param_1 = obj.allocate(size,mID);
  * int param_2 = obj.free(mID);
  */

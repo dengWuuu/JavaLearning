@@ -11,14 +11,11 @@ public class Solution {
     //31 * 19
     //650 * 191
     public static void main(String[] args) {
-//        Node head1 = new Node(3, new Node(1, null));
-//        Node head2 = new Node(1, new Node(9, null));
 
         Node head1 = new Node(6, new Node(5, new Node(0, null)));
         Node head2 = new Node(1, new Node(9, new Node(1, null)));
 
         multiply(head1, head2);
-
     }
 
     public static void multiply(Node head1, Node head2) {
