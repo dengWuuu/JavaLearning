@@ -1,4 +1,4 @@
-package main.java;
+package main.动态代理;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;

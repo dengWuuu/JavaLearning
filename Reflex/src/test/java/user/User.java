@@ -31,6 +31,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "User [name=" + name + ", age=" + age + "]";
+        return "user.User [name=" + name + ", age=" + age + "]";
     }
 }
