@@ -7,6 +7,7 @@ import java.util.List;
  * @author Wu
  * @date 2022年12月10日 22:16
  */
+//TODO 补线段树
 public class Solution {
     public long[] handleQuery(int[] nums1, int[] nums2, int[][] queries) {
         int[] preSum1 = new int[nums1.length + 1];
