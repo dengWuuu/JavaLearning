@@ -22,7 +22,6 @@ public class Solution {
                 }
             }
         }
-        System.out.println(Arrays.toString(zhishu));
         List<Integer> list = new ArrayList<>();
         for (int i = left; i <= right; i++) {
             if (zhishu[i]) list.add(i);

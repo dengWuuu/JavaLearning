@@ -13,9 +13,6 @@ public class Solution {
     long MOD = (long) (1e9 + 7);
 
     public long pow3(long a, long b) {
-        List<Integer> list = new ArrayList<>();
-        ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
-//        lock.writeLock()
         long ans = 1;
         while (b > 0) {
             if ((b & 1) == 1) {

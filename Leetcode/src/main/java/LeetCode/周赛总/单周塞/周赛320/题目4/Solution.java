@@ -8,7 +8,7 @@ import java.util.Set;
  * @author Wu
  * @date 2022年11月20日 9:56
  */
-//public class Solution {
+//public class Main {
 //    public int beautifulPartitions(String s, int k, int minLength) {
 //        long ans = 0;
 //        int MOD = (int) (1e9 + 7);
