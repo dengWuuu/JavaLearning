@@ -13,7 +13,7 @@ class MinStack {
     Deque<Integer> min;
 
     /**
-     * initialize your data structure here.
+     * build your data structure here.
      */
     public MinStack() {
         deque = new ArrayDeque<>();

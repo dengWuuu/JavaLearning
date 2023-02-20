@@ -13,7 +13,7 @@ class MedianFinder {
     Queue<Integer> min;
 
     /**
-     * initialize your data structure here.
+     * build your data structure here.
      */
     public MedianFinder() {
         max = new PriorityQueue<>((o1, o2) -> o2 - o1);
