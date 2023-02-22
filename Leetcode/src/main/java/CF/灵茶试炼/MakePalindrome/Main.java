@@ -39,7 +39,6 @@ public class Main {
                     ch[j--] = c;
                     cnt[k] -= 2;
                 }
-
             }
         }
         System.out.println(new String(ch));

@@ -19,7 +19,7 @@ public class Solution {
         }
     }
 
-    public Node initialize(int[] nums, int l, int r) {
+    public Node build(int[] nums, int l, int r) {
         if (l == r) {
             Node ans = new Node(l, r);
             ans.totalSum = nums[l];
@@ -27,8 +27,8 @@ public class Solution {
         }
         int middle = l + (r - l) / 2;
         Node ans = new Node(l, r);
-        ans.left = initialize(nums, l, middle);
-        ans.right = initialize(nums, middle + 1, r);
+        ans.left = build(nums, l, middle);
+        ans.right = build(nums, middle + 1, r);
         ans.totalSum = ans.left.totalSum + ans.right.totalSum;
         return ans;
     }
