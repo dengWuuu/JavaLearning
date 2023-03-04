@@ -18,4 +18,16 @@ public class Solution {
         }
         return ans;
     }
+
+    public long pow(long a, long b) {
+        long ans = 1;
+        while (b > 0) {
+            if ((b & 1) == 1) {
+                ans = ans * a;
+            }
+            a = a * a;
+            b >>= 1;
+        }
+        return ans;
+    }
 }

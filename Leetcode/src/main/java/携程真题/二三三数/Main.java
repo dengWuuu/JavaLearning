@@ -9,51 +9,25 @@ import java.util.StringTokenizer;
  */
 //http://www.codefun2000.com/p/P1012
 public class Main {
+    //258888888888863
     public static void main(String[] args) {
         Kattio io = new Kattio();
         int t = io.nextInt();
         for (int i = 0; i < t; i++) {
-            String num = io.next();
-            int cnt = 0;
-            StringBuilder str = new StringBuilder("23300000000000");
-            while (!isZero(num)) {
-                if (num.compareTo(str.toString()) >= 1) {
-                    num = sub(num, str.toString());
-                    cnt++;
-                } else {
-                    str.deleteCharAt(str.length() - 1);
+            long l = io.nextLong();
+            if (l % 233 != 0) io.println(-1);
+            else {
+                int ans = 0;
+                l /= 233;
+                while (l != 0) {
+                    ans += l % 10;
+                    l /= 10;
                 }
+                io.println(ans);
             }
-            if (isZero(num)) io.println(cnt);
-            else io.println(-1);
         }
         io.flush();
         io.close();
-    }
-
-    public static String sub(String s1, String s2) {
-        int lend = s1.length() - 1, rend = s2.length() - 1;
-        StringBuilder sb = new StringBuilder();
-        int j = 0;
-        while (lend >= 0 || rend >= 0) {
-            int lNum = lend >= 0 ? Integer.parseInt(String.valueOf(s1.charAt(lend--))) : 0;
-            int rNum = rend >= 0 ? Integer.parseInt(String.valueOf(s2.charAt(rend--))) : 0;
-            if (lNum - j < rNum) {
-                sb.append(lNum - rNum + 10 - j);
-                j = 1;
-            } else {
-                sb.append(lNum - rNum - j);
-                j = 0;
-            }
-        }
-        sb.reverse();
-        int i = 0;
-        while (i < sb.length() - 1 && sb.charAt(i) == '0') i++;
-        return sb.substring(i);
-    }
-
-    public static boolean isZero(String s) {
-        return s.equals("");
     }
 
     public static class Kattio extends PrintWriter {
