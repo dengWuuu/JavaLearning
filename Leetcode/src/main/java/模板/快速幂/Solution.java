@@ -1,10 +1,5 @@
 package 模板.快速幂;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
 /**
  * @author Wu
  * @date 2023年01月29日 13:10
