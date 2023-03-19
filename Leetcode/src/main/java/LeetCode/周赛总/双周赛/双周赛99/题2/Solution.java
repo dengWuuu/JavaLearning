@@ -7,13 +7,22 @@ import java.util.Arrays;
  * @date 2022年12月10日 22:16
  */
 public class Solution {
-    public long coloredCells(int n) {
-        long ans = 1;
-        int cnt = 4;
-        for (int i = 1; i < n; i++) {
-            ans += cnt;
-            cnt += 4;
+    public int maximizeGreatness(int[] nums) {
+        Arrays.sort(nums);
+        int ans = 0;
+
+        int cur = nums.length - 2;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            while (cur >= 0) {
+                if (nums[i] > nums[cur]) {
+                    ans++;
+                    cur--;
+                    break;
+                } else cur--;
+            }
+            if (cur < 0) break;
         }
+
         return ans;
     }
 }

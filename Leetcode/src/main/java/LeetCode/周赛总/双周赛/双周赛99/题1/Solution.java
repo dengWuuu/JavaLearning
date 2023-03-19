@@ -7,24 +7,31 @@ import java.util.Arrays;
  * @date 2022年12月10日 22:16
  */
 class Solution {
-    public int splitNum(int num) {
-        int[] nums = new int[10];
-        String str = String.valueOf(num);
-        for (int i = 0; i < str.length(); i++) {
-            nums[str.charAt(i) - '0']++;
-        }
 
-        int num1 = 0, num2 = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == 0) continue;
-            for (int j = 0; j < nums[i]; j++) {
-                if (num1 <= num2) {
-                    num1 = num1 * 10 + i;
-                } else {
-                    num2 = num2 * 10 + i;
-                }
-            }
+    public static void main(String[] args) {
+        System.out.println(distMoney(20, 3));
+    }
+
+    public static int distMoney(int money, int children) {
+        if (money < children) return -1;
+        int l = -1, r = children + 1;
+        while (l + 1 < r) {
+            int mid = (r - l) / 2 + l;
+            if (check(money, children, mid)) {
+                l = mid;
+            } else r = mid;
         }
-        return num1 + num2;
+        return l;
+    }
+
+    public static boolean check(int money, int children, int n) {
+        money -= n * 8;
+        if (money < 0) return false;
+        children -= n;
+        if (money < children) return false;
+        if (children == 1 && money == 4) return false;
+        if (children < 0) return false;
+        if (children == 0 && money > 0) return false;
+        return true;
     }
 }

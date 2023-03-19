@@ -1,9 +1,6 @@
 package LeetCode.周赛总.双周赛.双周赛99.题4;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author Wu
@@ -11,49 +8,35 @@ import java.util.Set;
  */
 
 public class Solution {
-    Set<String> set = new HashSet<>();
-    int cnt0 = 0;
-    int ans = 0;
-    List<List<Integer>> g = new ArrayList<>();
-    int k;
-    public int rootCount(int[][] edges, int[][] guesses, int k) {
-        this.k = k;
-        for(int i = 0; i < edges.length + 1; i++){
-            g.add(new ArrayList<>());
-        }
-
-        for(int[] edge : edges){
-            int x = edge[0];
-            int y = edge[1];
-            g.get(x).add(y);
-            g.get(y).add(x);
-        }
-
-        for(int[] guess : guesses){
-            set.add(guess[0] + "_" + guess[1]);
-        }
-        dfs(0, -1);
-        reroot(0, - 1, cnt0);
-        return ans;
+    public static void main(String[] args) {
+        repairCars(new int[]{4, 2, 3, 1}, 10);
     }
 
-    public void dfs(int i, int f){
-        for(int p : g.get(i)){
-            if(p != f){
-                if(set.contains(i + "_" + p)) cnt0++;
-                dfs(p, i);
-            }
+    public static long repairCars(int[] ranks, int cars) {
+        long l = -1;
+        long r = Long.MAX_VALUE;
+        while (l + 1 < r) {
+            long mid = (r + l) / 2;
+            if (check(mid, ranks, cars)) {
+                r = mid;
+            } else l = mid;
         }
+        return r;
     }
 
-    public void reroot(int i, int f, int cnt){
-        if(cnt >= k) ans++;
-        for (int p : g.get(i))
-            if (p != f) {
-                int c = cnt;
-                if (set.contains(i + "_" + p)) --c;
-                if (set.contains(p + "_" + i)) ++c;
-                reroot(p, i, c);
+    public static boolean check(long time, int[] ranks, int cars) {
+        for (int i = 0; i < ranks.length; i++) {
+            int num = 0;
+            long t;
+            while (num <= cars) {
+                t = (long) num * ranks[i] * num;
+                if (t < time) {
+                    num++;
+                } else break;
             }
+            cars -= num - 1;
+            if (cars <= 0) return true;
+        }
+        return false;
     }
 }
