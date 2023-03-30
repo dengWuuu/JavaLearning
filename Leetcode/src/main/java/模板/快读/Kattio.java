@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
  */
 
 public class Kattio extends PrintWriter {
-    private BufferedReader r;
+    private final BufferedReader r;
     private StringTokenizer st;
 
     // 标准 IO
@@ -23,9 +23,9 @@ public class Kattio extends PrintWriter {
     }
 
     // 文件 IO
-    public Kattio(String intput, String output) throws IOException {
+    public Kattio(String input, String output) throws IOException {
         super(output);
-        r = new BufferedReader(new FileReader(intput));
+        r = new BufferedReader(new FileReader(input));
     }
 
     // 在没有其他输入时返回 null
@@ -34,7 +34,7 @@ public class Kattio extends PrintWriter {
             while (st == null || !st.hasMoreTokens())
                 st = new StringTokenizer(r.readLine());
             return st.nextToken();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         return null;
     }
@@ -51,4 +51,3 @@ public class Kattio extends PrintWriter {
         return Long.parseLong(next());
     }
 }
-
