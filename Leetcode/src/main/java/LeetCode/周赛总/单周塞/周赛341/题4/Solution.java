@@ -7,88 +7,51 @@ import java.util.*;
  * @date 2022年12月11日 10:21
  */
 class Solution {
-    boolean[] visit;
+    int[] cnt;
+    List<List<Integer>> g = new ArrayList<>();
+    int[] price;
 
     public int minimumTotalPrice(int n, int[][] edges, int[] price, int[][] trips) {
-        List<List<Integer>> g = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             g.add(new ArrayList<>());
         }
-
+        this.price = price;
         for (int[] edge : edges) {
             g.get(edge[0]).add(edge[1]);
             g.get(edge[1]).add(edge[0]);
         }
-
-        int[][] nPrice = new int[n][n];
-        int idx = 0;
-        for (int i = 0; i < n; i++) {
-            nPrice[idx++] = divide(i, g, price);
-        }
-        int cnt = Integer.MAX_VALUE;
-        for (int i = 0; i < nPrice.length; i++) {
-            cnt = Math.min(cnt, getMin(nPrice[i], g, trips));
-        }
-        return cnt;
-    }
-
-    List<Integer> path;
-
-    public int getMin(int[] price, List<List<Integer>> g, int[][] trips) {
-        int cnt = 0;
+        cnt = new int[n];
         for (int[] trip : trips) {
-            int source = trip[0];
-            int target = trip[1];
-            visit = new boolean[price.length];
-            visit[source] = true;
-            path = new ArrayList<>();
-            path.add(source);
-            dfs(g, source, target);
-            for (int p : path) {
-                cnt += price[p];
-            }
+            dfs(trip[0], trip[1], -1);
         }
-        return cnt;
+        int[] p = dfs(0, -1);
+        return Math.min(p[0], p[1]);
     }
 
-    public void dfs(List<List<Integer>> g, int source, int target) {
-        if (source == target) {
-            return;
+    public boolean dfs(int x, int end, int f) {
+        if (x == end) {
+            cnt[x]++;
+            return true;
         }
-        for (int p : g.get(source)) {
-            if (visit[p]) continue;
-            visit[p] = true;
-            path.add(p);
-            dfs(g, p, target);
-            if (path.get(path.size() - 1) == target) break;
-            path.remove(path.size() - 1);
-            visit[p] = false;
+        for (int p : g.get(x)) {
+            if (p != f && dfs(p, end, x)) {
+                cnt[x]++;
+                return true;
+            }
         }
+        return false;
     }
 
-    public int[] divide(int p, List<List<Integer>> g, int[] price) {
-        int[] newPrice = new int[price.length];
-        boolean[] visited = new boolean[price.length];
-        visited[p] = true;
-        System.arraycopy(price, 0, newPrice, 0, price.length);
-        Deque<Integer> d = new ArrayDeque<>();
-        d.add(p);
-        int cnt = 0;
-        while (!d.isEmpty()) {
-            int size = d.size();
-            for (int i = 0; i < size; i++) {
-                int poll = d.poll();
-                if (cnt % 2 == 0) {
-                    newPrice[poll] /= 2;
-                }
-                for (Integer integer : g.get(poll)) {
-                    if (visited[integer]) continue;
-                    d.add(integer);
-                    visited[integer] = true;
-                }
+    // 类似 337. 打家劫舍 III https://leetcode.cn/problems/house-robber-iii/
+    private int[] dfs(int x, int fa) {
+        int notHalve = price[x] * cnt[x]; // x 不变
+        int halve = notHalve / 2; // x 减半
+        for (int y : g.get(x))
+            if (y != fa) {
+                int[] p = dfs(y, x); // 计算 y 不变/减半的最小价值总和
+                notHalve += Math.min(p[0], p[1]); // x 不变，那么 y 可以不变，可以减半，取这两种情况的最小值
+                halve += p[0]; // x 减半，那么 y 只能不变
             }
-            cnt++;
-        }
-        return newPrice;
+        return new int[]{notHalve, halve};
     }
 }
