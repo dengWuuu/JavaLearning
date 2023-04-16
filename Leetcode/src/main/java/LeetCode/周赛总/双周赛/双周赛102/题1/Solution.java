@@ -1,4 +1,4 @@
-package LeetCode.周赛总.双周赛.双周赛100.题1;
+package LeetCode.周赛总.双周赛.双周赛102.题1;
 
 /**
  * @author Wu

@@ -1,57 +1,42 @@
-package LeetCode.周赛总.双周赛.双周赛100.题3;
+package LeetCode.周赛总.双周赛.双周赛102.题3;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import LeetCode.热题100.hard.二叉树路径最大和.TreeNode;
+
+import java.util.*;
 
 /**
  * @author Wu
  * @date 2022年12月10日 22:16
  */
 class Solution {
-
-    public int countWays(int[][] ranges) {
-        long ans = 0;
-        Arrays.sort(ranges, Comparator.comparingInt(x -> x[0]));
-        System.out.println(Arrays.deepToString(ranges));
-
-        int[] idx = new int[ranges.length];
-        Map<Integer, Integer> map = new HashMap<>();
-        int cur = 1;
-        idx[0] = cur;
-        map.put(1, 1);
-        for (int i = 1; i < ranges.length; i++) {
-            int x = ranges[i][0];
-            if (x <= ranges[i - 1][1]) {
-                idx[i] = idx[i - 1];
-                ranges[i][1] = Math.max(ranges[i - 1][1], ranges[i][1]);
-                map.put(idx[i], map.getOrDefault(idx[i], 0) + 1);
-            } else {
-                cur += 1;
-                idx[i] = cur;
-                map.put(idx[i], 1);
+    public TreeNode replaceValueInTree(TreeNode root) {
+        Deque<TreeNode[]> d = new ArrayDeque<>();
+        d.add(new TreeNode[]{root, new TreeNode(-1)});
+        while (!d.isEmpty()) {
+            int size = d.size();
+            long sum = 0;
+            TreeNode[][] list = new TreeNode[size][2];
+            for (int i = 0; i < size; i++) {
+                TreeNode[] node = d.poll();
+                list[i] = node;
+                sum += node[0].val;
+                if (node[0].left != null) d.add(new TreeNode[]{node[0].left, node[0]});
+                if (node[0].right != null) d.add(new TreeNode[]{node[0].right, node[0]});
+            }
+            int idx = 0;
+            while (idx < list.length) {
+                if (idx + 1 < list.length && list[idx + 1][1] == list[idx][1]) {
+                    int tmp = list[idx][0].val;
+                    list[idx][0].val = (int) (sum - list[idx + 1][0].val - list[idx][0].val);
+                    list[idx + 1][0].val = (int) (sum - list[idx + 1][0].val - tmp);
+                    idx += 2;
+                } else {
+                    list[idx][0].val = (int) (sum - list[idx][0].val);
+                    idx++;
+                }
             }
         }
-        System.out.println(map);
-        int cnt = map.size();
 
-        ans = pow3(2, cnt);
-
-        return (int) ans;
-    }
-
-    long MOD = (long) (1e9 + 7);
-
-    public long pow3(long a, long b) {
-        long ans = 1;
-        while (b > 0) {
-            if ((b & 1) == 1) {
-                ans = ans * a % MOD;
-            }
-            a = a * a % MOD;
-            b >>= 1;
-        }
-        return ans;
+        return root;
     }
 }
