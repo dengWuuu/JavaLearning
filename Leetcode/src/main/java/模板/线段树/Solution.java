@@ -5,7 +5,7 @@ package 模板.线段树;
  * @date 2023年02月19日 16:29
  */
 public class Solution {
-    class Node {
+    public static class Node {
         Node left;
         Node right;
         int l;
